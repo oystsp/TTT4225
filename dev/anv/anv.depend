@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1424974669 source:/home/henning/Dropbox/Project_Euler/anv/main.c
+	<stdio.h>
+	<stddef.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	<sndfile.h>
+
+1424780918 /usr/local/include/sndfile.h
+	<stdio.h>
+	<sys/types.h>
+
