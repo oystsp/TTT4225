@@ -153,6 +153,8 @@ int main()
 
     free(h);
     free(mem);
+    h=NULL;
+    mem=NULL;
 
 
   return 0;
