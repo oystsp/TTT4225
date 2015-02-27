@@ -4,6 +4,7 @@
 #include <time.h>
 #include <math.h>
 #include <sndfile.h>
+#include <complex.h>
 
 #define ELEMENT_COUNT(X) (sizeof(X) / sizeof((X)[0]))
 #define TRUE 1
@@ -102,8 +103,28 @@ void printSignal(const char* Name,
 }
 
 
+struct COMPLEX {
+
+double Re, Im;
+inline COMPLEX operator +(COMPLEX& A, COMPLEX& B);
+inline COMPLEX operator +(COMPLEX& A, COMPLEX& B){
+    COMPLEX C;
+    C.Re = A.Re + B.Re;
+    C.Im = A.Im + B.Im;
+    return C};
+
+};
 
 
+
+/*
+inline COMPLEX operator +(COMPLEX& A, COMPLEX& B);
+inline COMPLEX operator +(COMPLEX& A, COMPLEX& B){
+    COMPLEX C;
+    C.Re = A.Re + B.Re;
+    C.Im = A.Im + B.Im;
+    return C};
+*/
 
 
 
@@ -122,6 +143,8 @@ int main()
 
 */
 
+
+
   FILE *f = fopen("filterCoeff_fullrate.txt", "r");
   if (f == NULL)
   {
@@ -133,8 +156,8 @@ int main()
     int N,i;
     /* first line gives filter order, use to allocate memory */
 	fscanf(f,"%d",&N);
-    if ((h=(double *)calloc(N,sizeof(double))) == NULL) exit(1);
-	if ((mem=(double *)calloc(N,sizeof(double))) == NULL) exit(1);
+    if ((h=(float *)calloc(N,sizeof(float))) == NULL) exit(1);
+	if ((mem=(float *)calloc(N,sizeof(float))) == NULL) exit(1);
 	printf("%d\n",N);
     for (i=0; i<N; i++){
 		fscanf(f,"%f",&h[i]);
@@ -155,6 +178,19 @@ int main()
     free(mem);
     h=NULL;
     mem=NULL;
+
+//    COMPLEX a;
+
+
+
+     double complex numb = 33 +222*I;
+
+     printf("real part %f, im part %f\n", creal(numb), cimag(numb));
+
+
+
+
+
 
 
   return 0;
