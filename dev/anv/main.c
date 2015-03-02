@@ -9,6 +9,8 @@
 #define ELEMENT_COUNT(X) (sizeof(X) / sizeof((X)[0]))
 #define TRUE 1
 #define FALSE 0
+#define BUFSIZE 1024
+
 
 /* Problem 1.1 Efficient implementations of LP-filters*/
 void pb1(){
@@ -70,7 +72,23 @@ int rand_gauss (float *x, int N) {
 	return 0;
 }
 
+static void fir_filter (double xin, char * coeff ){
+    double buffer[BUFSIZE], obuf[BUFSIZE];
+    sf_count_t count, cnt;
+    int i, n, nt=0, m, N, Nuse; /* N = number of coeff in filter*/
+    FILE *f;
 
+    /* Read filter coeff from input file */
+    if ((f = fopen (coeff,"r")) == NULL ) exit(1);
+
+    fscanf(f,"%d", &N);
+    printf("%d",N);
+
+
+
+
+
+}
 
 void convolve(const double Signal[/* SignalLen */], size_t SignalLen,
               const double Kernel[/* KernelLen */], size_t KernelLen,
@@ -103,28 +121,7 @@ void printSignal(const char* Name,
 }
 
 
-struct COMPLEX {
 
-double Re, Im;
-inline COMPLEX operator +(COMPLEX& A, COMPLEX& B);
-inline COMPLEX operator +(COMPLEX& A, COMPLEX& B){
-    COMPLEX C;
-    C.Re = A.Re + B.Re;
-    C.Im = A.Im + B.Im;
-    return C};
-
-};
-
-
-
-/*
-inline COMPLEX operator +(COMPLEX& A, COMPLEX& B);
-inline COMPLEX operator +(COMPLEX& A, COMPLEX& B){
-    COMPLEX C;
-    C.Re = A.Re + B.Re;
-    C.Im = A.Im + B.Im;
-    return C};
-*/
 
 
 
@@ -143,7 +140,7 @@ int main()
 
 */
 
-
+/*
 
   FILE *f = fopen("filterCoeff_fullrate.txt", "r");
   if (f == NULL)
@@ -154,7 +151,7 @@ int main()
 
     float *h, *mem;
     int N,i;
-    /* first line gives filter order, use to allocate memory */
+    /* first line gives filter order, use to allocate memory
 	fscanf(f,"%d",&N);
     if ((h=(float *)calloc(N,sizeof(float))) == NULL) exit(1);
 	if ((mem=(float *)calloc(N,sizeof(float))) == NULL) exit(1);
@@ -163,7 +160,6 @@ int main()
 		fscanf(f,"%f",&h[i]);
 		printf("%7.6f\n",h[i]);
 		mem[i]=0;        /* initialize filter memory at the same time */
-	}
 
 
 
@@ -172,6 +168,7 @@ int main()
 
 
 
+/*
     fclose(f);
 
     free(h);
@@ -190,8 +187,8 @@ int main()
 
 
 
+*/
 
-
-
+  int xin[] = {1};
   return 0;
 }
