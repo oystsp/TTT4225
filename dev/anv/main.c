@@ -16,7 +16,7 @@
 void pb1(){
 
 
-// Decaration of specs
+// Declaration of specs
 /*
 int D=4, Fs = 16000, Fs1 = Fs/D, Fs2 = Fs1/D;
 int Fg1 = Fs1/D, Fc1 = 2000;
@@ -37,7 +37,29 @@ int xin = 1;
 
 }
 
+/*
+double downsampler(double *xin[], int D){
+    double xout[length(xin)/D];
+    for (i = 0; i <= length(xin); i += D){
+        xout[i] = &xin[i];
+    }
+}
+*/
 
+/*
+double upsampler(double xin[], int I){
+    double xout[length(xin)*I];
+    int j = 0;
+    for (i=0; i<= length(xout);i++){
+        xout[i] = 0;
+    }
+
+    for (i= 0; i<= length(xin)*I; i+I)){
+        xout[i] = &xin[j];
+        j++;
+    }
+}
+*/
 
 int rand_gauss (float *x, int N) {
 /* Create Gaussian N(0,1) distributed numbers from uniformly distributed numbers using */
