@@ -36,18 +36,37 @@ int xin = 1;
 
 
 }
-
 /*
-double downsampler(double *xin[], int D){
-    double xout[length(xin)/D];
-    for (i = 0; i <= length(xin); i += D){
-        xout[i] = &xin[i];
+void pb2(){
+    double f1 = 0.00875;
+    double f2 = 0.0175;
+    double pi = 3.1415;
+    int Fs = 16000;
+
+    double x[10];
+    int n;
+    for (n = 0; n < length(x); n++){
+        x = sin(2*pi*f1*n) + sin(2*pi*f2*n);
     }
-}
-*/
+}*/
 
-/*
+
+double downsampler(double *xin[], int D){
+    /*
+    double xout[length(xin)/D];
+    j = 0;
+    for (i = 0; i <= length(xin); i += D){
+        xout[j] = &xin[i];
+        j++;
+    }
+    return xout;
+    */
+}
+
+
+
 double upsampler(double xin[], int I){
+    /*
     double xout[length(xin)*I];
     int j = 0;
     for (i=0; i<= length(xout);i++){
@@ -58,8 +77,35 @@ double upsampler(double xin[], int I){
         xout[i] = &xin[j];
         j++;
     }
+    return xout;
+    */
 }
-*/
+
+double flip(double in[]){
+    /*
+    double out[48];
+    int i;
+    for (i = 0; i < length(out); i++){
+        out[i] = in[length(in) - i];
+    }*/
+}
+
+void CMF_coeffs(double QMF_h0[]){
+    /*
+    int size = 48;
+    double g0[size] = flip(QMF_h0);
+    double h1[size];
+    int i;
+    for (i=0; i < length(g0); i++){
+        g0[i] = 2*g0[i];
+    }
+    for(i = 0; i < length(g0); i+=2){
+        g1[i] = -2*QMF_h0[i];
+        h1[i] = -g0[i+1]
+    }*/
+}
+
+
 
 int rand_gauss (float *x, int N) {
 /* Create Gaussian N(0,1) distributed numbers from uniformly distributed numbers using */
